@@ -1,93 +1,115 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=640" />
+    <head>
+        <meta charset="utf-8" />
+        <title>Genius</title>
+        <link rel="stylesheet" href="styles/style.css" />
+        <script src="js/jquery-1.8.2.min.js"></script>
+        <script src="js/selightbox.js"></script>
+        <script src="js/genius.js"></script>
+    </head>
+    <body>
+        <header>
+            <ul>
+                <li class="time"></li>
+                <li class="score"></li>
+                <li class="level"></li>
+            </ul>
+        </header>
 
-    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
-    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+        <section>
+            <section>
+                <article>
+                    <p>Ne kadar zeki olduğunu kanıtlamak ister misin?</p>
+                    <a href="#" id="startGame" class="lbOk">Oyuna Başla</a>
+                </article>
 
-    <script type="text/javascript" src="javascripts/modernizr.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $('#main_content').headsmart()
-      })
-    </script>
-    <title>Genius by skatersercan</title>
-  </head>
+                <ul>
+                    <li id="gameZone0"></li>
+                    <li id="gameZone1"></li>
+                    <li id="gameZone2"></li>
+                    <li id="gameZone3"></li>
+                    <li id="gameZone4"></li>
+                    <li id="gameZone5"></li>
+                    <li id="gameZone6"></li>
+                    <li id="gameZone7"></li>
+                    <li id="gameZone8"></li>
+                    <li id="gameZone9"></li>
+                    <li id="gameZone10"></li>
+                    <li id="gameZone11"></li>
+                    <li id="gameZone12"></li>
+                    <li id="gameZone13"></li>
+                    <li id="gameZone14"></li>
+                    <li id="gameZone15"></li>
+                    <li id="gameZone16"></li>
+                    <li id="gameZone17"></li>
+                    <li id="gameZone18"></li>
+                    <li id="gameZone19"></li>
+                    <li id="gameZone20"></li>
+                    <li id="gameZone21"></li>
+                    <li id="gameZone22"></li>
+                    <li id="gameZone23"></li>
+                    <li id="gameZone24"></li>
+                    <li id="gameZone25"></li>
+                    <li id="gameZone26"></li>
+                    <li id="gameZone27"></li>
+                    <li id="gameZone28"></li>
+                    <li id="gameZone29"></li>
+                    <li id="gameZone30"></li>
+                    <li id="gameZone31"></li>
+                    <li id="gameZone32"></li>
+                    <li id="gameZone33"></li>
+                    <li id="gameZone34"></li>
+                    <li id="gameZone35"></li>
+                    <li id="gameZone36"></li>
+                    <li id="gameZone37"></li>
+                    <li id="gameZone38"></li>
+                    <li id="gameZone39"></li>
+                </ul>
+            </section>
 
-  <body>
-    <a id="forkme_banner" href="https://github.com/skatersercan/Genius">View on GitHub</a>
-    <div class="shell">
+            <div id="lightBoxLose" class="lb">
+                <div>
+                    <h3>Yanlış kutuya tıkladın !!!</h3>
+                    <div id="lbContent">
+                        <p>Görsellerin çıktığı kutuları hatırlayıp onlara tıklaman gerekiyor. Tekrar oynamak için aşağıda ki butonu tıklayabilirsin.</p>
+                    </div>
+                    <div>
+                        <a href="#" id="lbNewGame" class="lbOk">Yeniden Oyna</a>
+                    </div>
+                </div>
+            </div>
+            <!-- lightBoxLose -->
+            
+            <div id="lightBoxWin" class="lb">
+                <div>
+                    <h3>Tebrikler !!!</h3>
+                    <div id="lbContent">
+                        <p>Oyunu bitirdin, Gerçekten de çok zekiymişsin :)</p>
+                        <p class="lblevScore"></p>
+                    </div>
+                    <div>
+                        <a href="#" id="lbWin" class="lbOk">Yeniden Oyna</a>
+                    </div>
+                </div>
+            </div>
+            <!-- lightBoxWin -->
 
-      <header>
-        <span class="ribbon-outer">
-          <span class="ribbon-inner">
-            <h1>Genius</h1>
-            <h2></h2>
-          </span>
-          <span class="left-tail"></span>
-          <span class="right-tail"></span>
-        </span>
-      </header>
+            <div id="lightTimeOver" class="lb">
+                <div>
+                    <h3>Süren bitti !!!</h3>
+                    <div id="lbContent">
+                        <p>Süren bitti, süreni daha iyi kullanıp yeniden oynamak için aşağıda ki butona tıklayabilirsiniz.</p>
+                        <p class="lblevScore"></p>
+                    </div>
+                    <div>
+                        <a href="#" id="lbTimeout" class="lbOk">Yeniden Oyna</a>
+                    </div>
+                </div>
+            </div>
+            <!-- lightTimeOver -->
 
-      <section id="downloads">
-        <span class="inner">
-          <a href="https://github.com/skatersercan/Genius/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/skatersercan/Genius/tarball/master" class="tgz"><em>download</em> .TGZ</a>
-        </span>
-      </section>
-
-
-      <span class="banner-fix"></span>
-
-
-      <section id="main_content">
-        <h3>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-
-      <footer>
-        <span class="ribbon-outer">
-          <span class="ribbon-inner">
-            <p>this project by <a href="https://github.com/skatersercan">skatersercan</a> can be found on <a href="https://github.com/skatersercan/Genius">GitHub</a></p>
-          </span>
-          <span class="left-tail"></span>
-          <span class="right-tail"></span>
-        </span>
-        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
-        <span class="octocat"></span>
-      </footer>
-
-    </div>
-
-    
-  </body>
+        </section>
+        <footer></footer>
+    </body>
 </html>
