@@ -1,4 +1,4 @@
-// Selightbox v1.1
+// Selightbox v1.1 (edited version)
 // http://wwww.sercaneraslan.com
 $(function(){
     $("body").prepend('<div id="lbOut"></div>');
