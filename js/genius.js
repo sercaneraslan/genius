@@ -51,9 +51,7 @@ game.Zone = function(){
         scoreWrite;
 
         for (var i=0; i<box; i++){
-            var spriteYpos = randomArr[i] * 95;
-            $('#gameZone'+randomArr[i]).css('background','url(images/sprite.png) 0 -'+spriteYpos+'px');
-            spriteYpos = 0;
+            $('#gameZone'+randomArr[i]).css('background','url(images/gameZone'+randomArr[i]+'.png) no-repeat');
         }
 
         setTimeout(function(){
@@ -74,7 +72,6 @@ game.Zone = function(){
         // Tıklanan kutu doğru değilse err classı ekliyoruz, doğru ise err classını silip ok classı ekliyoruz.
         for (var i=0; i<box; i++){
             if(e.currentTarget.id !== 'gameZone'+randomArr[i]){
-                console.log(e.currentTarget.id);
                 $('#'+e.currentTarget.id).addClass("err");
             }else{
                 $('#'+e.currentTarget.id).removeClass("err").addClass("ok , clicked");

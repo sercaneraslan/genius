@@ -28,9 +28,9 @@ section ul li {
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
-    box-shadow: -5px 5px 40px #DBDBDB;
-    -webkit-box-shadow: -5px 5px 40px #DBDBDB;
-    -moz-box-shadow: -5px 5px 40px #DBDBDB;
+    box-shadow: -5px 5px 40px gray;
+    -webkit-box-shadow: -5px 5px 40px gray;
+    -moz-box-shadow: -5px 5px 40px gray;
 }
 article {
     height: 120px;
@@ -52,7 +52,7 @@ section ul, .lightBoxLose, .lightBoxWin, .lightTimeOver {
     display: none;
 }
 .ok {
-    background: url('../images/sprite.png') 0 -3801px !important;
+    background: url('../images/ok.png') no-repeat !important;
 }
 footer {
     height:  40px;
