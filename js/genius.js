@@ -1,83 +1,89 @@
-var util = {},
+// Genius v2.1
+// sercaneraslan.com
+var random = {},
     game = {};
 
 // Random olarak oluşturulan array'de ki aynı sayıları ayıklar
-util.array = {};
-util.array.unique = function (arrayItem){
+random.Array = function (x){
     var a = [],
-        l = arrayItem.length;
+        l = x.length;
+
     for (var i=0; i<l; i++){
         for (var j=i+1; j<l; j++) {
-            if(arrayItem[i] === arrayItem[j]){
+            if(x[i] === x[j]){
                 j = ++i;
             }
         }
-        a.push(arrayItem[i]);
+        a.push(x[i]);
     }
     return a;
 };
 
+// Oyunun tamamı burada kontrol ediliyor
 game.Zone = function(){
     var box = 3,
-        clicked = 0,
-        score = 0,
-        randomArr = [],
         lev = 1,
+        score = 0,
         second = 5,
+        randomArr = [],
         set = null,
-        gameZone = $('section ul li'),
+        level = $('.level'),
+        scoreEl = $('.score'),
         time = $('.time'),
-        scoreWrite = $('.score').text('Puan: ' + score*second);
+        gameZone = $('section ul li'),
         
-    // Random sayılar ile dizi oluşturur.
-    var randomNumber = function(){
-        for (var i=0; i<box; i++){
-           randomArr[i] = Math.floor(Math.random()*40);
-        }
-        
-        randomArr = util.array.unique(randomArr);
-        if(randomArr.length !== box){
-            randomNumber();
-        }
+        // Random sayılar ile dizi oluşturur.
+        randomNumber = function(){
+            for (var i=0; i<box; i++){
+               randomArr[i] = Math.floor(Math.random()*40);
+            }
+            
+            randomArr = random.Array(randomArr);
+            if(randomArr.length !== box){
+                randomNumber();
+            }
 
-        gameZoneBox();
-        return randomArr;
-    }
+            gameZoneBox();
+            return randomArr;
+        },
 
-    // Kutuların arkaplanlarına image ekler ve 2 sn sonra kaybeder
-    var gameZoneBox = function(){
-        $('section ul').hide().fadeIn(100);
-        $('.level').text('Seviye: '+lev);
-        scoreWrite;
-
-        for (var i=0; i<box; i++){
-            var spriteYpos = randomArr[i] * 95;
-            $('#gameZone'+randomArr[i]).css('background','url(images/sprite.png) 0 -'+spriteYpos+'px');
-            spriteYpos = 0;
-        }
-
-        setTimeout(function(){
-            gameZone.css('background','');
-        },2000);
-    }
-    
-    // Geri sayan zamanlayıcı
-    var timer = function(){
-        time.text('Süre : ' + second-- + ' sn');
-        if(second <= -1){
+        // Kutuların arkaplanlarına image ekler ve 1.5 sn sonra kaybeder
+        gameZoneBox = function(){
+            gameZone.removeClass("ok err");
+            
             clearInterval(set);
-            gameZone.selightbox('#lightTimeOver');
-        }
-    }
+            set = setInterval(timer,1000);
+
+            level.text('Seviye: '+lev);
+            scoreEl.text('Puan: ' + score*second);
+            time.text('Süre : ' + second + ' sn');
+
+            for (var i=0; i<box; i++){
+                $('#gameZone'+randomArr[i]).css('background','url(images/sprite.png) 0 -'+ randomArr[i]*95 +'px');
+            }
+
+            setTimeout(function(){
+                gameZone.css('background','');
+            },1500);
+        },
+    
+        // Geri sayan zamanlayıcı
+        timer = function(){
+            time.text('Süre : ' + second-- + ' sn');
+
+            if(second <= -1){
+                clearInterval(set);
+                gameZone.selightbox('#lightTimeOver');
+            }
+        };
 
     gameZone.click(function(e){
         // Tıklanan kutu doğru değilse err classı ekliyoruz, doğru ise err classını silip ok classı ekliyoruz.
         for (var i=0; i<box; i++){
             if(e.currentTarget.id !== 'gameZone'+randomArr[i]){
-                console.log(e.currentTarget.id);
                 $('#'+e.currentTarget.id).addClass("err");
             }else{
-                $('#'+e.currentTarget.id).removeClass("err").addClass("ok , clicked");
+                $('#'+e.currentTarget.id).removeClass("err").addClass("ok");
                 break;
             }
         }
@@ -88,28 +94,18 @@ game.Zone = function(){
             gameZone.selightbox('#lightBoxLose');
         }
 
-        clicked = $('.clicked').size();
-
         // Doğru tıklanan kutu sayısı, gösterdiğimiz kutu sayısına eşit ise sonra ki aşamaya geçiliyor.
-        if(clicked == box){
+        if($('.ok').size() == box){
             score = score+box;
-            clicked = 0;
             box++;
-            scoreWrite;
 
             // Gösterilen kutu sayısı 25 e eşit değilse bir sonra ki aşamaya geçiliyor, eşitse oyun bitiyor.
             if(box == 25){
+                clearInterval(set);
                 gameZone.selightbox('#lightBoxWin');
-                clearInterval(set);
             }else{
-                gameZone.removeClass("clicked");
-                $('.level').text('Seviye: '+lev);
-                $('.score').text('Puan: ' + score*second);
-                second = 7 + lev+1;
-                clearInterval(set);
+                second = 7 + lev;
                 lev++;
-                gameZone.removeClass("ok err");
-                set = setInterval(timer,1000);
                 randomNumber();
             }
         }
@@ -123,16 +119,27 @@ game.Zone = function(){
     });
 
     $('#lbNewGame, #lbWin, #lbTimeout').click(function(){
-        location.reload();
+        lev = 1;
+        box = 3;
+        score = 0;
+        second = 5;
+        randomNumber();
     });
     
-    set = setInterval(timer,1000);
     randomNumber();
 };
 
 $(function(){
-    $("#startGame").click(function(){
+    var start = $("#startGame");
+
+    $("body > img").load(function(){
+        $("article > img").hide();
+        start.show();
+    });
+
+    start.click(function(){
         $('article').hide();
+        $('section ul').show();
         new game.Zone();
     });
 });
