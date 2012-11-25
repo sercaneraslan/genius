@@ -42,20 +42,23 @@ article p {
     margin: 0 0 30px 85px;
     color: #000;
 }
+article img {
+    margin: 4px 0 0px 233px;
+}
 .level, .score, .time {
     width: 100px;
     float: right;
     margin-top: 10px;
     color: #000;
 }
-section ul, .lightBoxLose, .lightBoxWin, .lightTimeOver {
+body > img, section ul, #startGame, .lightBoxLose, .lightBoxWin, .lightTimeOver {
     display: none;
 }
 .ok {
-    background: url('../images/ok.png') no-repeat !important;
+    background: url('../images/sprite.png') 0 -3801px !important;
 }
 footer {
-    height:  40px;
+    height: 40px;
     background: url('../images/footer.png') repeat-x;
 }
 /* Selightbox v1.1 */
