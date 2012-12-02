@@ -37,13 +37,11 @@ article {
     width: 510px;
     margin: 0 auto;
     padding-top: 200px;
+    background: url('../images/loading.gif') no-repeat 217px 247px;
 }
 article p {
     margin: 0 0 30px 85px;
     color: #000;
-}
-article img {
-    margin: 4px 0 0px 233px;
 }
 .level, .score, .time {
     width: 100px;
@@ -51,7 +49,7 @@ article img {
     margin-top: 10px;
     color: #000;
 }
-body > img, section ul, #startGame, .lightBoxLose, .lightBoxWin, .lightTimeOver {
+h1, section ul, #startGame, .lightBoxLose, .lightBoxWin, .lightTimeOver, footer p {
     display: none;
 }
 .ok {
@@ -114,30 +112,32 @@ footer {
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#6A6D72', endColorstr='#3E4147')"; /* IE8+ */
     background: linear-gradient(#6A6D72, #3E4147); /* the standard */
 }
+.lb p{
+    margin: 8px 0;
+}
 #lbContent {
     float: left;
     margin: 25px;
-    padding: 30px;
+    padding: 15px 30px;
     width: 400px;
     font-size: 13px;
     border: 1px solid #DBDBDB;
     background: #FFF;
 }
-#lb, #lbContent, .lbOk {
+#lb, #lbContent, button {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
 }
-.lbOk {
+button {
     width: 120px;
-    margin: 10px 10px 10px 185px;
-    padding: 10px 10px 9px;
+    margin: 10px 10px 10px 192px;
+    padding: 7px;
     color: #FFF;
+    font-weight: bold;
     cursor: pointer;
     text-align: center;
-    font-size: 12px;
-    font-weight: bold;
-    border: 1px solid #4A7434;
+    border: none;
     float: left;
     background: #7EC157; /* old browsers */
     background: -moz-linear-gradient(top, #7EC157 0%, #57A128 100%); /* firefox */
