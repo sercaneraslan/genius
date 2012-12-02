@@ -1,5 +1,5 @@
 // Selightbox v1.1 (edited version)
-// http://wwww.sercaneraslan.com
+// sercaneraslan.com
 $(function(){
     $("body").prepend('<div id="lbOut"></div>');
     $.fn.selightbox = function(selector){
@@ -15,7 +15,7 @@ $(function(){
         lbOut.height(docHeight).show();
         lb.css({'top': (winY - lbOutY) / 2, 'left': (winX - lbOutX) / 2}).show();
         
-        $(".lbOk").click(function(){
+        $("#lbNewGame, #lbWin, #lbTimeout").click(function(){
             lb.add(lbOut).hide();
             return false;
         });

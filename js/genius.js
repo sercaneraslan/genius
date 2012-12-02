@@ -6,10 +6,12 @@ var random = {},
 // Random olarak oluşturulan array'de ki aynı sayıları ayıklar
 random.Array = function (x){
     var a = [],
-        l = x.length;
+        l = x.length,
+        i = 0,
+        j = 0;
 
-    for (var i=0; i<l; i++){
-        for (var j=i+1; j<l; j++) {
+    for (i; i<l; i++){
+        for (j=i+1; j<l; j++) {
             if(x[i] === x[j]){
                 j = ++i;
             }
@@ -19,7 +21,7 @@ random.Array = function (x){
     return a;
 };
 
-// Oyun kontrolleri burada
+// Oyunun tamamı burada kontrol ediliyor
 game.Zone = function(){
     var box = 3,
         lev = 1,
@@ -34,10 +36,12 @@ game.Zone = function(){
         
         // Random sayılar ile dizi oluşturur.
         randomNumber = function(){
-            for (var i=0; i<box; i++){
+            var i = 0;
+
+            for (i; i<box; i++){
                randomArr[i] = Math.floor(Math.random()*40);
             }
-            
+
             randomArr = random.Array(randomArr);
             if(randomArr.length !== box){
                 randomNumber();
@@ -49,6 +53,8 @@ game.Zone = function(){
 
         // Kutuların arkaplanlarına image ekler ve 1.5 sn sonra kaybeder
         gameZoneBox = function(){
+            var i = 0;
+
             gameZone.removeClass("ok err");
             
             clearInterval(set);
@@ -58,7 +64,7 @@ game.Zone = function(){
             scoreEl.text('Puan: ' + score*second);
             time.text('Süre : ' + second + ' sn');
 
-            for (var i=0; i<box; i++){
+            for (i; i<box; i++){
                 $('#gameZone'+randomArr[i]).css('background','url(images/sprite.png) 0 -'+ randomArr[i]*95 +'px');
             }
 
@@ -79,7 +85,9 @@ game.Zone = function(){
 
     gameZone.click(function(e){
         // Tıklanan kutu doğru değilse err classı ekliyoruz, doğru ise err classını silip ok classı ekliyoruz.
-        for (var i=0; i<box; i++){
+        var i = 0;
+
+        for (i; i<box; i++){
             if(e.currentTarget.id !== 'gameZone'+randomArr[i]){
                 $('#'+e.currentTarget.id).addClass("err");
             }else{
@@ -95,7 +103,7 @@ game.Zone = function(){
         }
 
         // Doğru tıklanan kutu sayısı, gösterdiğimiz kutu sayısına eşit ise sonra ki aşamaya geçiliyor.
-        if($('.ok').size() == box){
+        if($('.ok').length == box){
             score = score+box;
             box++;
 
@@ -130,16 +138,27 @@ game.Zone = function(){
 };
 
 $(function(){
-    var start = $("#startGame");
+    $("section section").append('<ul></ul>');
+    
+    var start = $("#startGame"),
+        article = $("article"),
+        sectionUl = $("section ul"),
+        sprite = new Image(),
+        i = 0;
 
-    $("body > img").load(function(){
-        $("article > img").hide();
+    sprite.src = "images/sprite.png";
+    sprite.onload = function(){
+        article.css('background','none');
         start.show();
-    });
+    };
+
+    for (i; i<=39; i++) {
+        sectionUl.append('<li id="gameZone' + i + '"></li>')
+    };
 
     start.click(function(){
-        $('article').hide();
-        $('section ul').show();
+        article.hide();
+        sectionUl.show();
         new game.Zone();
     });
 });
