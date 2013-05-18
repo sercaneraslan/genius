@@ -67,7 +67,7 @@ game.Zone = function() {
 
             gameZone.removeClass( "ok err" );
             
-            clearTimeout( set );
+            clearTimeout(setTime);
 
             setTime = setTimeout( timer,1000 );
 
