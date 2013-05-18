@@ -34,7 +34,7 @@ game.Zone = function() {
         score = 0,
         second = 5,
         randomArr = [],
-        setTime = null,
+        time = null,
         level = $('.level'),
         scoreEl = $('.score'),
         time = $('.time'),
@@ -45,13 +45,13 @@ game.Zone = function() {
             
             var i = 0;
 
-            for ( i; i < box; i++ ) {
+            for ( i; i < box; i++ ){
                randomArr[i] = Math.floor( Math.random() * 40 );
             }
 
             randomArr = random.Array( randomArr );
             
-            if( randomArr.length !== box ) {
+            if( randomArr.length !== box ){
                 randomNumber();
             }
 
@@ -65,11 +65,11 @@ game.Zone = function() {
             
             var i = 0;
 
-            gameZone.removeClass("ok err");
+            gameZone.removeClass( "ok err" );
             
-            clearTimeout(setTime);
+            clearTimeout(time);
 
-            setTime = setTimeout( timer,1000 );
+            time = setTimeout( timer,1000 );
 
             level.text( 'Seviye: ' + lev );
             scoreEl.text( 'Puan: ' + score * second );
@@ -89,7 +89,7 @@ game.Zone = function() {
             time.text( 'Süre : ' + second-- + ' sn' );
 
             if( second <= -1 ) {
-                clearTimeout(setTime);
+                clearTimeout(time);
                 gameZone.selightbox('#lightTimeOver');
             }
         };
@@ -109,7 +109,7 @@ game.Zone = function() {
 
         // Kutunun err classı varsa oyunu bitiriyoruz.
         if ( $('#'+e.currentTarget.id).hasClass("err") ) {
-            clearTimeout(setTime);
+            clearTimeout(time);
             gameZone.selightbox('#lightBoxLose');
         }
 
@@ -120,7 +120,7 @@ game.Zone = function() {
 
             // Gösterilen kutu sayısı 25 e eşit değilse bir sonra ki aşamaya geçiliyor, eşitse oyun bitiyor.
             if( box == 25 ) {
-                clearTimeout(setTime);
+                clearTimeout(time);
                 gameZone.selightbox('#lightBoxWin');
             } else {
                 second = 7 + lev;
