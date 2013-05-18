@@ -45,13 +45,13 @@ game.Zone = function() {
             
             var i = 0;
 
-            for ( i; i < box; i++ ){
+            for ( i; i < box; i++ ) {
                randomArr[i] = Math.floor( Math.random() * 40 );
             }
 
             randomArr = random.Array( randomArr );
             
-            if( randomArr.length !== box ){
+            if( randomArr.length !== box ) {
                 randomNumber();
             }
 
@@ -65,7 +65,7 @@ game.Zone = function() {
             
             var i = 0;
 
-            gameZone.removeClass( "ok err" );
+            gameZone.removeClass("ok err");
             
             clearTimeout(setTime);
 
