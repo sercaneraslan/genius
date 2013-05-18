@@ -34,7 +34,7 @@ game.Zone = function() {
         score = 0,
         second = 5,
         randomArr = [],
-        set = null,
+        setTime = null,
         level = $('.level'),
         scoreEl = $('.score'),
         time = $('.time'),
@@ -67,9 +67,9 @@ game.Zone = function() {
 
             gameZone.removeClass( "ok err" );
             
-            clearInterval( set );
+            clearTimeout( set );
 
-            set = setInterval( timer,1000 );
+            setTime = setTimeout( timer,1000 );
 
             level.text( 'Seviye: ' + lev );
             scoreEl.text( 'Puan: ' + score * second );
@@ -89,7 +89,7 @@ game.Zone = function() {
             time.text( 'Süre : ' + second-- + ' sn' );
 
             if( second <= -1 ) {
-                clearInterval(set);
+                clearTimeout(setTime);
                 gameZone.selightbox('#lightTimeOver');
             }
         };
@@ -109,18 +109,18 @@ game.Zone = function() {
 
         // Kutunun err classı varsa oyunu bitiriyoruz.
         if ( $('#'+e.currentTarget.id).hasClass("err") ) {
-            clearInterval(set);
+            clearTimeout(setTime);
             gameZone.selightbox('#lightBoxLose');
         }
 
         // Doğru tıklanan kutu sayısı, gösterdiğimiz kutu sayısına eşit ise sonra ki aşamaya geçiliyor.
         if( $('.ok').length == box ) {
-            score = score+box;
+            score = score + box;
             box++;
 
             // Gösterilen kutu sayısı 25 e eşit değilse bir sonra ki aşamaya geçiliyor, eşitse oyun bitiyor.
             if( box == 25 ) {
-                clearInterval(set);
+                clearTimeout(setTime);
                 gameZone.selightbox('#lightBoxWin');
             } else {
                 second = 7 + lev;
