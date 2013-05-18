@@ -4,27 +4,30 @@ var random = {},
     game = {};
 
 // Random olarak oluşturulan array'de ki aynı sayıları ayıklar
-random.Array = function (x) {
+random.Array = function( number ) {
 
-    var a = [],
-        l = x.length,
+    var array = [],
+        len = number.length,
         i = 0,
         j = 0;
 
-    for ( i; i < l; i++ ) {
-        for ( j = i+1;  j < l; j++ ) {
-            if ( x[i] === x[j] ) {
+    for ( i; i < len; i++ ) {
+        
+        for ( j = i+1;  j < len; j++ ) {
+            
+            if ( number[i] === number[j] ) {
                 j = ++i;
             }
         }
-        a.push( x[i] );
+
+        array.push( number[i] );
     }
 
-    return a;
+    return array;
 };
 
 // Oyunun tamamı burada kontrol ediliyor
-game.Zone = function(){
+game.Zone = function() {
 
     var box = 3,
         lev = 1,
