@@ -1,0 +1,114 @@
+/*
+*
+* Genius Styles
+*
+*/
+
+@font-face {
+    font-family: "MuseoSansBold";
+    src: url(../font/MuseoSans-500.otf);
+}
+
+body {
+    font-family: "MuseoSansBold";
+    background: #A9D153;
+    color: #2a333b;
+}
+
+header {
+    height: 70px;
+    background: #3EC6E0;
+    padding: 0 50px;
+    display: none;
+}
+header h1 {
+    float: left;
+    padding-top: 10px;
+    font-size: 18px;
+}
+header .level,
+header .score,
+header .time {
+    width: 100px;
+    float: right;
+    margin-top: 10px;
+    color: #000;
+}
+
+section {
+    background: -moz-linear-gradient(#3EC6E0, #A3EEF3);
+    background: -webkit-linear-gradient(#3EC6E0, #A3EEF3);
+    background: linear-gradient(#3EC6E0, #A3EEF3);
+}
+section section {
+    width: 805px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+section ul {
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+section li {
+    height: 95px;
+    width: 95px;
+    float: left;
+    margin: 0 0 5px 5px;
+    border-radius: 10px;
+    box-shadow: inset -1px 2px 7px #2A333B;
+    cursor: pointer;
+}
+section .ok {
+    background: url('../images/sprite.png') 0 -3801px !important;
+}
+
+article {
+    height: 400px;
+    width: 850px;
+    margin: 0 auto;
+    padding-top: 200px;
+    background: url('../images/loading.gif') no-repeat center 48%;
+}
+article h2 {
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+button {
+    display: block;
+    width: 120px;
+    margin: 0 auto;
+    padding: 7px;
+    color: #FFF;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background: #7EC157;
+}
+
+footer {
+    height: 40px;
+    background: url('../images/footer.png') repeat-x;
+}
+
+/* Show And Hide Styles */
+section ul,
+.lightBoxLose,
+.lightBoxWin,
+.lightTimeOver {
+    display: none;
+}
+
+header h1,
+#start,
+.game-active article {
+    display: none;
+}
+.game-active header,
+.game-active section ul {
+    display: block;
+}
