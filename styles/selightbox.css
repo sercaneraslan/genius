@@ -1,0 +1,55 @@
+/*
+*
+* Selightbox v1.1
+*
+*/
+#lbOut {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000;
+    z-index: 9991;
+    opacity: 0.5;
+}
+
+.lb {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding: 10px;
+    background: #000;
+    background: rgba(0, 0, 0, 0.3) !important;
+    border-radius: 5px;
+}
+
+.lb > div {
+    float: left;
+    min-height: 100px;
+    height: 100px;
+    height: auto !important;
+    background: #E3E3E3;
+}
+
+.lb h3 {
+    color: #FFFFFF;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    background: #6A6D72;
+}
+
+.lb p {
+    margin: 8px 0;
+}
+
+#lbContent {
+    float: left;
+    margin: 25px;
+    padding: 15px 30px;
+    width: 400px;
+    font-size: 13px;
+    border: 1px solid #DBDBDB;
+    background: #FFF;
+    border-radius: 5px;
+}
