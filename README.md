@@ -1,4 +1,7 @@
-Genius
-======
+![genius](images/genius.png)
 
-Genius is a mind game. Try <a href="http://sercaneraslan.github.io/genius/">Genius</a>.
+## Genius - The Mind Game
+
+Genius is a mind game. 
+
+Try <a href="http://sercaneraslan.github.io/genius/">Genius</a>.
