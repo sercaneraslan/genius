@@ -1,7 +1,13 @@
-// Selightbox v1.1 (edited version)
-// sercaneraslan.com
+/*
+*
+* Selightbox.js v1.1.0
+*
+* Genius.js Special Version
+*
+*/
 $(function(){
     $("body").prepend('<div id="lbOut"></div>');
+
     $.fn.selightbox = function(selector){
         var lb = $((selector == null) ? selector = ".lb" : selector = selector),
             lbOut = $("#lbOut");
@@ -15,10 +21,11 @@ $(function(){
         lbOut.height(docHeight).show();
         lb.css({'top': (winY - lbOutY) / 2, 'left': (winX - lbOutX) / 2}).show();
         
-        $("#lbNewGame, #lbWin, #lbTimeout").click(function(){
+        $(".play-again").click(function(){
             lb.add(lbOut).hide();
             return false;
         });
+
         return false;
     };
 });
