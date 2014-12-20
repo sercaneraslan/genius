@@ -78,7 +78,7 @@ article h2 {
 button {
     display: block;
     width: 120px;
-    margin: 0 auto;
+    margin: 25px auto 0 auto;
     padding: 7px;
     color: #FFF;
     font-size: 15px;
@@ -99,15 +99,13 @@ footer {
 section ul,
 .lightBoxLose,
 .lightBoxWin,
-.lightTimeOver {
-    display: none;
-}
-
+.lightTimeOver,
 header h1,
 #start,
 .game-active article {
     display: none;
 }
+
 .game-active header,
 .game-active section ul {
     display: block;

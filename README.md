@@ -4,4 +4,4 @@
 
 Genius is a mind game. 
 
-Try <a href="http://sercaneraslan.github.io/genius/">Genius</a>.
+Try <a href="http://sercaneraslan.com/genius/">Genius</a>.
